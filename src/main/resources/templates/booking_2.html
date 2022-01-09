@@ -1,0 +1,461 @@
+<html>
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css' rel='stylesheet'>
+<link href='' rel='stylesheet'>
+<style>
+    body {
+        background-image: linear-gradient(to right, #7B1FA2, #E91E63)
+    }
+
+    h4 {
+        color: white
+    }
+
+    .section {
+        position: relative;
+        height: 100vh;
+    }
+
+    .section .section-center {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    #booking {
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .booking-form {
+        position: relative;
+        max-width: 642px;
+        width: 100%;
+        margin: auto;
+        padding: 40px;
+        overflow: hidden;
+        background-image: url('https://i.imgur.com/8z1tx3u.jpg');
+        background-size: cover;
+        border-radius: 5px;
+        z-index: 20;
+    }
+
+    .booking-form::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        top: 0;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: -1;
+    }
+
+    .booking-form .form-header {
+        text-align: center;
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .booking-form .form-header h1 {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-size: 42px;
+        margin: 0px;
+        color: #fff;
+    }
+
+    .booking-form .form-group {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .booking-form .form-control {
+        background-color: rgba(255, 255, 255, 0.2);
+        height: 60px;
+        padding: 0px 25px;
+        border: none;
+        border-radius: 40px;
+        color: #fff;
+        -webkit-box-shadow: 0px 0px 0px 2px transparent;
+        box-shadow: 0px 0px 0px 2px transparent;
+        -webkit-transition: 0.2s;
+        transition: 0.2s;
+    }
+
+    .booking-form .form-control::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control:-ms-input-placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form .form-control:focus {
+        -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+        box-shadow: 0px 0px 0px 2px #ff8846;
+    }
+
+    .booking-form input[type="date"].form-control {
+        padding-top: 16px;
+    }
+
+    .booking-form input[type="date"].form-control:invalid {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form input[type="date"].form-control+.form-label {
+        opacity: 1;
+        top: 10px;
+    }
+
+    .booking-form input[type="number"].form-control+.form-label {
+        opacity: 1;
+        top: 10px;
+    }
+
+    .booking-form select.form-control {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .booking-form select.form-control:invalid {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .booking-form select.form-control+.select-arrow {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        width: 32px;
+        line-height: 32px;
+        height: 32px;
+        text-align: center;
+        pointer-events: none;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+    }
+
+    .booking-form select.form-control+.select-arrow:after {
+        content: '\279C';
+        display: block;
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .booking-form select.form-control option {
+        color: #000;
+    }
+
+    .booking-form .form-label {
+        position: absolute;
+        top: -10px;
+        left: 25px;
+        opacity: 0;
+        color: #ff8846;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.3px;
+        height: 15px;
+        line-height: 15px;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+    }
+
+    .service_checkboxes {
+        color: #ff8846;
+        font-weight: 400;
+        height: 60px;
+        padding: 10px 30px;
+        width: 100%;
+        border-radius: 40px;
+        border: none;
+        font-size: 16px;
+        letter-spacing: 1.3px;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+        margin-bottom: 20px;
+    }
+
+    .booking-form .form-group.input-not-empty .form-control {
+        padding-top: 16px;
+    }
+
+    .booking-form .form-group.input-not-empty .form-label {
+        opacity: 1;
+        top: 10px;
+    }
+
+    .booking-form .submit-btn {
+        color: #fff;
+        background-color: #e35e0a;
+        font-weight: 700;
+        height: 60px;
+        padding: 10px 30px;
+        width: 100%;
+        border-radius: 40px;
+        border: none;
+        text-transform: uppercase;
+        font-size: 16px;
+        letter-spacing: 1.3px;
+        -webkit-transition: 0.2s all;
+        transition: 0.2s all;
+        margin-top: 50px;
+    }
+
+    .booking-form .submit-btn:hover,
+    .booking-form .submit-btn:focus {
+        opacity: 0.9;
+    }
+</style>
+<script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+<script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js'></script>
+<body>
+    <div id="booking" class="section">
+        <div class="section-center">
+            <div class="container">
+                <div class="row">
+                    <div class="booking-form">
+                        <div class="form-header">
+                            <h1 id="available">Slot Availability</h1>
+                            <h1 id="slot"></h1>
+                        </div>
+                        <h4>Available Services:</h4>
+                            <div class="form-group ">
+                                <div class="service_checkboxes">
+                                    <input type="checkbox" id="service1" name="service1" value="wash">
+                                    <label for="vehicle1"> Car Washing</label><br>
+                                    <input type="checkbox" id="service2" name="service2" value="repair">
+                                    <label for="vehicle2"> Car Inspection</label><br>
+                                    <input type="checkbox" id="service3" name="service3" value="dryclean">
+                                    <label for="vehicle3"> Dry Cleaning</label><br><br>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="form-btn">
+                                        <button class="submit-btn" id="submitbtn" >Checkout</button>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+<script type="module">
+    import {
+        initializeApp
+    } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js";
+    import {
+        getAnalytics
+    } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-analytics.js";
+
+    import {
+        getFirestore,
+        doc,
+        getDoc,
+        getDocs,
+        onSnapshot,
+        collection
+    } from "https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js";
+    const firebaseConfig = {
+        apiKey: "AIzaSyBTrQLmG73loEPd8Kg6uV4ZG01RnUdZ7rI",
+        authDomain: "trial-6b9c1.firebaseapp.com",
+        databaseURL: "https://trial-6b9c1-default-rtdb.firebaseio.com",
+        projectId: "trial-6b9c1",
+        storageBucket: "trial-6b9c1.appspot.com",
+        messagingSenderId: "192488287455",
+        appId: "1:192488287455:web:9edc9a178b1ec23f578d6a",
+        measurementId: "G-N4RJLP15EL"
+    };
+
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore();
+</script>
+
+<script>
+      
+
+    
+    var availabile_space = -1;
+
+    // console.log(sessionStorage.getItem('date'));
+
+
+    async function GetAllDataRealTime() {
+        const dbRef = collection(db, "Spots");
+        onSnapshot(dbRef, (querySnapshot)=> {
+              querySnapshot.forEach(doc => {
+              // console.log(doc.data().password)
+              if(doc.data().name == sessionStorage.getItem('city').split(',')[0]){
+
+                    var time = parseInt(sessionStorage.getItem('time'));
+                    var hour = parseInt(sessionStorage.getItem('hour'));
+                    var final_hour = time + hour;
+                    var emails = []
+                    var occupancy_status = []
+
+                    // console.log(Object.keys(doc.data().hour[time]));
+
+                    for(var k in (doc.data().hour[time])){
+                            // console.log(doc.data().hour[time])
+                        // console.log(typeof(k));
+                        // console.log(`${k}: ${(doc.data().hour[time])[k]}`);
+                        var space = (`${(doc.data().hour[time])[k]}`);
+
+                        var occupancy = space.split(",",3)[2];
+                        // console.log(occupancy)
+                        occupancy_status.push(occupancy);
+                        
+                        // var email = (space.split(",",1))[0];
+                        // // console.log(email)
+                        // emails.push(email)
+
+                        // var worker = space.split(",",2)[1];
+                        // // console.log(worker)
+
+                        // var suv = space.split(",",4)[3];
+                        // // console.log(suv);
+                        
+                        // var service1 = space.split(",",5)[4];
+                        // var service2 = space.split(",",6)[5];
+                        // var service3 = space.split(",",7)[6];
+                        // console.log(service1 , service2 , service3)
+                        
+                    }
+
+                    var suv_no = doc.data().suv;
+                    var hatch_no = doc.data().hatch;
+
+                    var flag = 0;
+                    
+                    var temp = time;
+
+
+                //SUV / SEDAN
+
+                if(sessionStorage.getItem('car_type') == "SUV / SEDAN"){
+
+
+                    // for(var i = suv_no; i<suv_no+hatch_no ;i++){
+                        
+                    //     time = temp;
+
+                    //     // console.log(occupancy_status[i])
+                    //     if(occupancy_status[i] == "false"){
+                    //         flag = 1;                            
+                    //         // time++;
+                    //         for(var a; time >= 24 || time == final_hour; time++){
+                    //             var key = Object.keys(doc.data().hour[time])[i];
+                    //             if(!((doc.data().hour[time])[key])){
+                    //                 flag =0;
+                    //                 break;
+                    //             }
+                    //         }
+                    //         if(flag == 1){
+                    //             availabile_space = suv_no+hatch_no - i;
+
+                    //             console.log(availabile_space);
+                                
+                    //             document.getElementById('available').innerHTML = ("Slot Availabile : Space No. " + availabile_space); 
+                    //             break;
+
+                    //         }
+                    //     }
+                    // }
+                    // if(flag == 0){
+                    //     document.getElementById('available').innerHTML = "Slot : Not Available ";                                
+                    // }
+                }
+                    
+                // HATCHBACK 
+
+                if(sessionStorage.getItem('car_type') == "HATCHBACK"){
+
+
+                    for(var i = 0; i<hatch_no ;i++){
+                        
+                        time = temp;
+
+                        // console.log(occupancy_status[i])
+                        if(occupancy_status[i] == "false"){
+                            flag = 1;                            
+                            time++;
+
+                            for(; time >= 24 || time == final_hour; time++){
+                                var key = Object.keys(doc.data().hour[time])[i];
+                                if(!((doc.data().hour[time])[key])){
+                                    flag =0;
+                                    break;
+                                }
+                            }
+                            if(flag == 1){
+                                availabile_space = suv_no + i;
+
+                                console.log(availabile_space);
+                                
+                                document.getElementById('available').innerHTML = ("Slot Availabile : Space No. " + availabile_space); 
+                                break;
+
+                            }
+                        }
+                    }
+                    if(flag == 0){
+                        document.getElementById('available').innerHTML = "Slot : Not Available ";                                
+                    }
+                }
+                    
+                
+            }
+
+
+            //    console.log(doc.data().suv);
+            //    console.log(doc.data().hour[0].space_1[0]);
+              
+             });
+           }); 
+
+
+    }
+    var btn = document.getElementById('submitbtn');
+    
+    var loc = window.location.pathname;
+    var dir = loc.substring(0, loc.lastIndexOf('/'));
+
+    console.log()
+
+            btn.addEventListener("click", function() {
+                sessionStorage.setItem('space_choosen', availabile_space) ;
+                sessionStorage.setItem('service1' , document.getElementById('service1').checked) ;
+                sessionStorage.setItem('service2' , document.getElementById('service2').checked) ;
+                sessionStorage.setItem('service3' , document.getElementById('service3').checked) ;
+                window.location.href= '/payment';
+                // console.log()
+
+            });
+    
+
+    window.onload = GetAllDataRealTime;
+</script>
+
+
+
+
+
+
+
+</html>
